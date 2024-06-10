@@ -1,0 +1,103 @@
+openapi: 3.1.1
+info:
+  title: Owe No More
+  version: "0.0.1"
+servers:
+  - url: http://localhost:3000/api/v1
+paths:
+  /users:
+    post:
+      summary: Create a new user
+      requestBody:
+        description: The user to create
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  example: "abc@def.com"
+                password:
+                  type: string
+                  example: "p@$$w0rd"
+                username:
+                  type: string
+                  example: "john_doe"
+  /login:
+    post:
+      summary: Login a user
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  example: "abc@def.com"
+                password:
+                  type: string
+                  example: "p@$$w0rd"
+  /groups:
+    get:
+      summary: List all groups associated with current user
+      responses:
+        200:
+          description: List of groups
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                    balance:
+                      type: number
+    post:
+      summary: Create a new group
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: "Room 307"
+                participants:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      email:
+                        type: string
+components:
+  schemas:
+    Todo:
+      description: Object representing a Todo
+      type: object
+      properties:
+        id:
+          description: id of the entity
+          format: int64
+          type: integer
+          example: 42
+        title:
+          description: title of the todo
+          type: string
+          example: My task
+        completed:
+          description: whether the todo is completed or not
+          type: boolean
+          example: false
+        url:
+          description: url associated with the todo
+          type: string
+        order:
+          format: int32
+          description: order in the priority list
+          type: integer
+          example: 10
