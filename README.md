@@ -6,7 +6,7 @@ A splitwise like API written in go to manage expenses and shit.
 
 ## Milestones
 
-- [ ] Sanity Check
+- [x] Sanity Check
 - [ ] Host the api
 - [ ] Setup CI/CD
 - [ ] User domain
